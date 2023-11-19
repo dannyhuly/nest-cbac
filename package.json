@@ -1,0 +1,70 @@
+{
+  "name": "@nestjs/cbac",
+  "version": "1.0.0.alpha",
+  "description": "Nest Claims-Based Access Control (CBAC) made easy",
+  "author": "Daniel Huly",
+  "license": "MIT",
+  "url": "https://github.com/dannyhuly/nest-cbac#readme",
+  "scripts": {
+    "build": "rimraf -rf dist && tsc -p tsconfig.json",
+    "format": "prettier --write \"{lib,test}/**/*.ts\"",
+    "lint": "eslint 'lib/**/*.ts' --fix",
+    "prepublish:npm": "npm run build",
+    "publish:npm": "npm publish --access public",
+    "prepublish:next": "npm run build",
+    "publish:next": "npm publish --access public --tag next",
+    "test:integration": "jest --config ./tests/jest-e2e.json --runInBand",
+    "prerelease": "npm run build",
+    "release": "release-it"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "18.4.2",
+    "@commitlint/config-angular": "18.4.2",
+    "@nestjs/common": "10.2.9",
+    "@nestjs/core": "10.2.9",
+    "@nestjs/platform-express": "10.2.9",
+    "@nestjs/testing": "10.2.9",
+    "@types/jest": "29.5.8",
+    "@types/lodash": "4.14.201",
+    "@types/node": "20.9.2",
+    "@types/uuid": "9.0.7",
+    "@typescript-eslint/eslint-plugin": "6.11.0",
+    "@typescript-eslint/parser": "6.11.0",
+    "eslint": "8.54.0",
+    "eslint-config-prettier": "9.0.0",
+    "eslint-plugin-import": "2.29.0",
+    "husky": "8.0.3",
+    "jest": "29.7.0",
+    "joi": "17.11.0",
+    "lint-staged": "15.1.0",
+    "prettier": "3.1.0",
+    "reflect-metadata": "0.1.13",
+    "release-it": "17.0.0",
+    "rimraf": "5.0.5",
+    "ts-jest": "29.1.1",
+    "typescript": "5.2.2"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^8.0.0 || ^9.0.0 || ^10.0.0",
+    "reflect-metadata": "^0.1.13",
+    "sequelize": "^6.35.0"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "prettier --write"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -c .commitlintrc.json -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dannyhuly/nest-cbac"
+  },
+  "dependencies": {
+    "@casl/ability": "^6.5.0"
+  }
+}
